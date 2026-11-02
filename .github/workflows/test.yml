@@ -1,0 +1,15 @@
+name: test
+on: [push, pull_request]
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - run: python -m unittest discover -s tests -v
+      - name: Manifest sanity
+        run: |
+          jq -e '.schemaVersion == 1 and (.id | test("^[A-Za-z0-9][A-Za-z0-9._-]*$")) and (.kinds | length > 0)' manifest.json
+          jq -r '.entryPoints[]' manifest.json | xargs -I{} test -f {}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "dotbear.proton-ge",
+  "name": "Proton-GE",
+  "version": "0.1.0",
+  "author": "Bjorn Hougaard",
+  "license": "MIT",
+  "description": "Keep Steam's Proton-GE Latest up to date with prebuilt upstream releases.",
+  "kinds": ["service", "bar-widget"],
+  "keepLoaded": true,
+  "entryPoints": {"service": "Service.qml", "barWidget": "BarWidget.qml"},
+  "barWidget": {
+    "displayName": "Proton-GE",
+    "description": "Proton-GE versions, automatic updates, and rollback.",
+    "category": "Gaming",
+    "allowMultiple": false,
+    "defaultSection": "right"
+  }
+}
